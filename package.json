@@ -9,14 +9,20 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@tanstack/react-query": "^4.33.0",
     "@types/node": "20.5.7",
     "@types/react": "18.2.21",
     "@types/react-dom": "18.2.7",
     "eslint": "8.48.0",
     "eslint-config-next": "13.4.19",
+    "ethers": "^6.7.1",
     "next": "13.4.19",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "typescript": "5.2.2"
+    "typescript": "5.2.2",
+    "vanilla-cafe": "^0.1.5",
+    "w3-evm": "^1.2.2",
+    "w3-evm-react": "^1.2.0",
+    "w3-evm-walletconnect": "^0.0.1"
   }
 }
