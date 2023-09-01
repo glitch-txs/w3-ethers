@@ -1,4 +1,3 @@
-import { Client } from '@/type'
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { ReactNode } from 'react'
 import { W3 } from 'w3-evm-react'
