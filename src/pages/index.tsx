@@ -1,8 +1,29 @@
 import Head from 'next/head'
 import styles from '@/styles/Home.module.css'
-import { Network, NetworkPlugin } from 'ethers'
+import { Contract, Network, NetworkPlugin, parseEther } from 'ethers'
+import Connect from '@/connect'
+import { getW3Address } from 'w3-evm-react'
+import { disconnectW3 } from 'w3-evm'
+import abi from '../abi/Future.json'
+import { getW3E } from '@/store'
 
 export default function Home() {
+
+  const address = getW3Address()
+
+  async function mint(){
+    const target = '0x1fe84fE4e1ae96F9b202188f7a6835dB3D27a264'
+
+    const signer = getW3E.signer()
+    if(!signer) return
+    
+    const contract = new Contract(target, abi.abi, signer)
+    const tx = await contract.mint(address,parseEther('2'))
+
+    console.log("tx", tx)
+    const a = await tx.wait()
+    console.log("wait ", a)
+  }
 
   return (
     <>
@@ -14,6 +35,11 @@ export default function Home() {
       </Head>
       <main className={styles.main}>
         hello
+        <br />
+        address: {address}
+        <button onClick={mint} >Mint</button>
+        <button onClick={disconnectW3} >disconnect</button>
+        <Connect/>
       </main>
     </>
   )

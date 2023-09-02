@@ -5,18 +5,13 @@ import type { AppProps } from 'next/app'
 import { Injected } from 'w3-evm-react'
 import { WalletConnect } from 'w3-evm-walletconnect'
 
-/* Icons */
-import walletconnect from 'public/walletconnect.svg'
-import wallet from 'public/extension-wallet.png'
-
 /* WalletConnect Project Id */
-const projectId = 'YOUR_PROJECT_ID'
+const projectId = process.env.NEXT_PUBLIC_PROJECT_ID as string
 
 /* Set up connectors */
-const browserWallet = new Injected({ icon: wallet })
+const browserWallet = new Injected()
 const walletConnect = new WalletConnect({ 
   projectId,
-  icon: walletconnect,
   showQrModal: true,
   optionalChains:[1, 137]
 })
